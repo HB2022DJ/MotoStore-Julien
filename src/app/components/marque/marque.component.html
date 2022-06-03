@@ -1,0 +1,29 @@
+<div class="container d-flex">
+
+    <div class="row mx-auto mt-3">
+
+        <div class="col-3"><button (click)="getMotoByMarque('KTM')" class="btn btn-outline-primary" style="width:100%">KTM</button></div>
+        <div class="col-3"><button (click)="getMotoByMarque('Yamaha')" class="btn btn-outline-primary" style="width:100%">Yamaha</button></div>
+        <div class="col-3"><button (click)="getMotoByMarque('Kawasaki')" class="btn btn-outline-primary" style="width:100%">Kawasaki</button></div>
+        <div class="col-3"><button (click)="getMotoByMarque('Harley Davidson')" class="btn btn-outline-primary" style="width:100%">Harley-Davidson</button></div>
+    </div>
+</div>
+
+<div ngIf="display == 'true'" class="container">
+
+  <div class="row mt-3" >
+    <div class="col-sm-6 col-lg-3 mb-3 " *ngFor="let moto of motoTable" >
+        <div class="card d-flex shadow text-white bg-dark">
+            <img [src]="moto.image" class="card-img-top" [alt]="moto.image">
+            <div class="card-body">
+                <h5 class="card-title"> {{moto.marque}} </h5>
+                <p class="card-text"> Prix : {{moto.prix | number:'0.2-2'}} €<br>
+                </p>
+                <button [routerLink]="['/',moto.id]" class="btn btn-outline-success mb-1 ">En savoir +</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+  <div class="container"><button type="button" class="btn btn-outline-info mt-3" [routerLink]="['/']" style="width:100% ;">Retour à la page d'accueil</button></div>
